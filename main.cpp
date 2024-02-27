@@ -8,8 +8,8 @@ int main()
 	head = makeStudent(N);
 	printStudent(head);
 	cout << "The length of the list " << getLength(head) << endl;
-	head = sortStudent(head, 1);
+	/*head = sortStudent(head, 1);
 	printStudent(head);
 	head = sortStudent(head, 0);
-	printStudent(head);
+	printStudent(head);*/
 }

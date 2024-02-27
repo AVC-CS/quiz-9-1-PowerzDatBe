@@ -19,14 +19,36 @@ struct Student
 Student *makeStudent(int N);
 void printStudent(Student *head);
 int getLength(Student *head);
-Student *sortStudent(Student *head, int asc);
+//Student *sortStudent(Student *head, int asc);
 
 Student *makeStudent(int N)
 {
-    /*******************************
-     * Code your program here
-     *******************************/
+    ifstream ifs;
+    Student *temp, *head, *prev;
+
+    ifs.open("students.txt");
+    if(!ifs) {
+        cerr << "FILE COOKED" << endl;
+        exit(0);
+    }
+
+    for(int i = 0; i < N; i++) {
+        temp = new Student;
+        ifs >> temp->id >> temp->name >> temp->score[0] >> temp->score[1];
+        temp->sum = temp->score[0] + temp->score[1];
+        temp-> avg = temp->sum / NUMCOURSE;
+        if(i == 0) {
+            head = temp;
+        }
+        else {
+            prev->next = temp;
+        }
+        prev = temp;
+    }
+
+    return head;
 }
+
 void printStudent(Student *head)
 {
     Student *ptr = head;
@@ -41,20 +63,22 @@ void printStudent(Student *head)
         ptr = ptr->next;
     }
     cout << endl;
-    /*******************************
-     * Code your program here
-     *******************************/
 }
+
 int getLength(Student *head)
 {
-    /*******************************
-     * Code your program here
-     *******************************/
+    Student *ptr = head;
+    int cnt = 0;
+    while(ptr != NULL) {
+        cnt++;
+        ptr = ptr->next;
+    }
+    
+    return cnt;
 }
-Student *sortStudent(Student *head, int asc)
+
+/*Student *sortStudent(Student *head, int asc)
 {
-    /*******************************
-     * Code your program here
-     *******************************/
+    
     return head;
-}
+} */
